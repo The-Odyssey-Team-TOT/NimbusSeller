@@ -10,3 +10,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+html {
+  background-image: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXFmbGQzeGU5OWpmMndqZzFvbWtrYXE5djd3aWdrdGN1Nmd2c3BtaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xBQcBO3NwQXE7o3Dik/giphy.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
