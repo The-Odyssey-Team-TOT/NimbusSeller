@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :brooms, only: [:index, :new, :show, :create]
-  resources :bookings, only: [:create]
+  resources :bookings, only: [:index, :new, :show, :create]
 
   get 'bookings/owner', to: "bookings#owner_bookings"
   get 'bookings/renter', to: "bookings#renter_bookings"
