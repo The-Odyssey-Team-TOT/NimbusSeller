@@ -1,2 +1,13 @@
-<h1>Brooms#index</h1>
-<p>Find me in app/views/brooms/index.html.erb</p>
+<h1>All our Brooms</h1>
+
+<%= link_to 'Add a new Broom', new_broom_path, class: 'btn btn-primary' %>
+
+<ul>
+  <% @brooms.each do |broom| %>
+    <li>
+      <%= link_to broom.name, broom_path(broom) %>
+      <p><%= broom.description %></p>
+      <p>price : <%= number_to_currency(broom.price) %></p>
+    </li>
+  <% end %>
+</ul>
