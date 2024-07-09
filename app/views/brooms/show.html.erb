@@ -1,2 +1,9 @@
-<h1>Brooms#show</h1>
-<p>Find me in app/views/brooms/show.html.erb</p>
+<h1><%= @broom.name %></h1>
+
+<p><%= @broom.description %></p>
+<% if @broom.photo.attached? %>
+  <%= image_tag @broom.photo, class: 'broom-photo' %>
+<% end %>
+<p>Prix : <%= number_to_currency(@broom.price) %>$</p>
+
+<%= link_to 'Retour à la liste', brooms_path, class: 'btn btn-secondary' %>
