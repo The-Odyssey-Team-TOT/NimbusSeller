@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_broom
+  # before_action :authenticate_user!
+  before_action :set_broom, only: [:new, :create]
   def index
     @bookings = Booking.all
   end
@@ -10,13 +10,13 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new(booking_param)
-
+    @booking = Booking.new
   end
 
   def create
-    @booking = Booking.new(booking_param)
+    @booking = Booking.new(booking_params)
     @booking.broom = @broom
+    @booking.user = current_user
     if @booking.save
       redirect_to booking_path(@broom)
     else
@@ -54,7 +54,7 @@ class BookingsController < ApplicationController
     @broom = Broom.find(params[:broom_id])
   end
 
-  def booking_param
+  def booking_params
     params.require(:booking).permit(:start_date, :end_date, :status, :user_id, :broom_id)
   end
 end

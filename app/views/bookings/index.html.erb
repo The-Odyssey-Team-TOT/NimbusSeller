@@ -1,0 +1,33 @@
+
+<h1 class="my-4">My Bookings</h1>
+
+<% if @bookings.any? %>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Broom Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.start_date %></td>
+            <td><%= booking.end_date %></td>
+            <td><%= booking.broom.name %></td>
+            <td><%= number_to_currency(booking.broom.price) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="alert alert-warning" role="alert">
+    No bookings found.
+  </div>
+<% end %>
+
+<%= link_to 'Make a new booking', new_broom_booking_path, class: 'btn btn-primary mt-3' %>
