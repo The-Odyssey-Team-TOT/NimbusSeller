@@ -10,3 +10,28 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.title {
+  margin: 10rem;
+  font-size: 5em;
+  color: black;
+  text-align: center;
+  margin-top: 20px;
+}
+@keyframes rotateImage {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+.broom-logo {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}

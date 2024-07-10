@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   get 'bookings/renter', to: "bookings#renter_bookings"
 
   resources :brooms, only: [:index, :new, :show, :create] do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:index, :new, :show]
+  resources :bookings, only: [:index, :show]
 end
