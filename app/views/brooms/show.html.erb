@@ -7,3 +7,6 @@
 <p>Prix : <%= number_to_currency(@broom.price) %>$</p>
 
 <%= link_to 'Retour à la liste', brooms_path, class: 'btn btn-secondary' %>
+<%= render 'bookings/form' %>
+
+<%= link_to 'Réserver ce balai', new_booking_path(@broom), class: 'btn btn-secondary' %>

@@ -1,2 +1,30 @@
-<h1>Bookings#owner_bookings</h1>
-<p>Find me in app/views/bookings/owner_bookings.html.erb</p>
+<h1 class="my-4">My Bookings</h1>
+<% if @owner_bookings.any? %>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Broom Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @owner_bookings.each do |owner_booking| %>
+          <tr>
+            <td><%= owner_booking.start_date %></td>
+            <td><%= owner_booking.end_date %></td>
+            <td><%= owner_booking.broom.name %></td>
+            <td><%= number_to_currency(owner_booking.broom.price) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="alert alert-warning" role="alert">
+    No bookings found.
+  </div>
+<% end %>
+<%= link_to 'Go back to all brooms', brooms_path, class: 'btn btn-primary mt-3' %>
