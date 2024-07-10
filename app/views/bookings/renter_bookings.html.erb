@@ -1,32 +1,37 @@
-<h1 class="my-4">My Bookings</h1>
-<% if @renter_bookings.any? %>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-dark">
-        <tr>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Broom Name</th>
-          <th>Status</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @renter_bookings.each do |renter_booking| %>
+<div class="text-center m-3 p-3">
+  <h1>My bookings</h1>
+</div>
+
+<div class="container shadow p-5 mb-5 bg-body-tertiary rounded">
+  <% if @renter_bookings.any? %>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
           <tr>
-            <td><%= renter_booking.start_date %></td>
-            <td><%= renter_booking.end_date %></td>
-            <td><%= renter_booking.broom.name %></td>
-            <td><%= renter_booking.status %></td>
-            <td><%= number_to_currency(renter_booking.broom.price) %></td>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Broom Name</th>
+            <th>Status</th>
+            <th>Price</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-<% else %>
-  <div class="alert alert-warning" role="alert">
-    No bookings found.
-  </div>
-<% end %>
-<%= link_to 'Go back to all brooms', brooms_path, class: 'btn btn-primary mt-3' %>
+        </thead>
+        <tbody>
+          <% @renter_bookings.each do |renter_booking| %>
+            <tr>
+              <td><%= renter_booking.start_date.strftime('%d-%m-%Y') %></td>
+              <td><%= renter_booking.end_date.strftime('%d-%m-%Y') %></td>
+              <td><%= renter_booking.broom.name %></td>
+              <td><%= renter_booking.status %></td>
+              <td><%= number_to_currency(renter_booking.broom.price) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="alert alert-warning" role="alert">
+      No bookings found.
+    </div>
+  <% end %>
+  <%= link_to 'Go back to all brooms', brooms_path, class: 'btn btn-primary mt-3' %>
+</div>

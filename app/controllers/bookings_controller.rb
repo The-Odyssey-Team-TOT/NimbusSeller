@@ -11,7 +11,8 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new(booking_param)
+    @booking = Booking.new
+    @broom = Broom.find(params[:broom_id])
   end
 
   def create

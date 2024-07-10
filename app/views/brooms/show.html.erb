@@ -1,12 +1,22 @@
-<h1><%= @broom.name %></h1>
+<div class="container mt-5">
+  <div class="card shadow p-3 mb-5 bg-body-tertiary rounded text-shadow">
+    <div class="card-body text-shadow">
+      <h1 class="card-title text-center"><%= @broom.name %></h1>
 
-<p><%= @broom.description %></p>
-<% if @broom.photo.attached? %>
-  <%= image_tag @broom.photo, class: 'broom-photo' %>
-<% end %>
-<p>Prix : <%= number_to_currency(@broom.price) %>$</p>
-
-<%= link_to 'Retour à la liste', brooms_path, class: 'btn btn-secondary' %>
-<%= render 'bookings/form' %>
-
-<%= link_to 'Réserver ce balai', new_booking_path(@broom), class: 'btn btn-secondary' %>
+      <% if @broom.photo.attached? %>
+        <div class="text-center my-4" id="text-shadow">
+          <%= image_tag @broom.photo, class: 'img-fluid rounded broom-photo', alt: @broom.name, style: 'max-height: 400px;' %>
+        </div>
+      <% end %>
+      <p class="card-text"><%= @broom.description %></p>
+      <p class="card-text text-center"><strong>Prix :</strong> <%= number_to_currency(@broom.price) %>$</p>
+      <div class="d-flex justify-content-between">
+        <%= link_to 'Go back to the brooms', brooms_path, class: 'btn btn-secondary btn-rounded' %>
+      </div>
+      <br>
+      <h3>Book this broom</h3>
+      <br>
+      <%= render 'components/form' %>
+    </div>
+  </div>
+</div>
