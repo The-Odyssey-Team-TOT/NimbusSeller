@@ -6,6 +6,7 @@ class BroomsController < ApplicationController
 
   def show
     @broom = Broom.find(params[:id])
+    @booking = Booking.new
   end
 
   def new

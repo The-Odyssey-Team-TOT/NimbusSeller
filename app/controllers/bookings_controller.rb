@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_broom
+  before_action :set_broom, except: [:index, :show, :owner_bookings, :renter_bookings]
 
   def index
     @bookings = Booking.all
@@ -17,22 +17,24 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_param)
     @booking.broom = @broom
+    @booking.user = current_user
+    @booking.status = 'pending'
     if @booking.save
-      redirect_to booking_path(@broom)
+      redirect_to bookings_renter_path
     else
-      render :new
+      render 'brooms/show', alert: 'Sorry, booking failed.'
     end
   end
 
   def owner_bookings
     @owner_brooms = Broom.where(user: current_user)
     @owner_bookings = @owner_brooms.map do |owner_broom|
-      owner_broom.bookings.where(status: "pending")
+      owner_broom.bookings.where(status: "Pending")
     end.flatten
   end
 
   def renter_bookings
-    @bookings = current_user.bookings
+    @renter_bookings = current_user.bookings
   end
 
   def accept_booking
@@ -58,6 +60,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_param
-    params.require(:booking).permit(:start_date, :end_date, :status, :user_id, :broom_id)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
 end
