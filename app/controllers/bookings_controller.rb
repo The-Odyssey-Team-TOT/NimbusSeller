@@ -25,15 +25,18 @@ class BookingsController < ApplicationController
   end
 
   def owner_bookings
-    @bookings = current_user.bookings.where(status: 'pending')
+    @owner_brooms = Broom.where(user: current_user)
+    @owner_bookings = @owner_brooms.map do |owner_broom|
+      owner_broom.bookings.where(status: "pending")
+    end.flatten
   end
 
   def renter_bookings
-    @bookings = current_user.bookings.where.not(status: 'pending')
+    @bookings = current_user.bookings
   end
 
   def accept_booking
-    if @booking.update(status: 'accepted')
+    if @booking.update(status: "accepted")
       redirect_to owner_bookings_path, notice: 'The broom’s owner accepted your request.'
     else
       redirect_to owner_bookings_path, alert: 'The request was declined.'
@@ -41,7 +44,7 @@ class BookingsController < ApplicationController
   end
 
   def decline_booking
-    if @booking.update(status: 'declined')
+    if @booking.update(status: "declined")
       redirect_to owner_bookings_path, notice: 'Booking request declined.'
     else
       redirect_to owner_bookings_path, alert: 'Failed to decline booking request'
