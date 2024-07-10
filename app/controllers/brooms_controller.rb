@@ -6,11 +6,7 @@ class BroomsController < ApplicationController
 
   def show
     @broom = Broom.find(params[:id])
-<<<<<<< HEAD
-    @broom = Broom.new
-=======
     @booking = Booking.new
->>>>>>> b6c3193c7044009445e08264ab5f414c0ce354e2
   end
 
   def new
@@ -21,11 +17,7 @@ class BroomsController < ApplicationController
     @broom = Broom.new(broom_params)
     @broom.user = current_user
     if @broom.save
-<<<<<<< HEAD
-      redirect_to brooms_path, notice: 'Broom was successfully created.'
-=======
       redirect_to broom_path(@broom)
->>>>>>> b6c3193c7044009445e08264ab5f414c0ce354e2
     else
       render :new, status: :unprocessable_entity
     end
