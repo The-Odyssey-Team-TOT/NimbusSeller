@@ -14,7 +14,7 @@
     <div class="col">
       <div class="card h-100" style="width: 18rem;">
         <% if broom.photo.present? %>
-          <%= image_tag broom.photo, class: "card-img-top", alt: broom.name %>
+          <%= cl_image_tag broom.photo.key, class: "card-img-top", alt: broom.name %>
         <% else %>
           <%= image_tag class: "card-img-top", alt: "Default Broom Image" %>
         <% end %>
