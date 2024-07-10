@@ -6,7 +6,6 @@ class BroomsController < ApplicationController
 
   def show
     @broom = Broom.find(params[:id])
-    @broom = Broom.new
   end
 
   def new
