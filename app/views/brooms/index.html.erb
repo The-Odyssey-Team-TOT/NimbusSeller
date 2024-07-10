@@ -1,13 +1,30 @@
-<h1>All our Brooms</h1>
-
-<%= link_to 'Add a new Broom', new_broom_path, class: 'btn btn-primary' %>
-
-<ul>
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <i class="fa-solid fa-broom"></i>
+    </a>
+    <%= link_to 'Add a new Broom', new_broom_path, class: 'btn btn-primary' %>
+  </div>
+</nav>
+<div class="text-center m-3">
+  <h1>All our Brooms</h1>
+</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
   <% @brooms.each do |broom| %>
-    <li class="brooms-display">
-      <%= link_to broom.name, broom_path(broom) %>
-      <p><%= broom.description %></p>
-      <p>price : <%= number_to_currency(broom.price) %></p>
-    </li>
+    <div class="col">
+      <div class="card h-100" style="width: 18rem;">
+        <% if broom.photo.present? %>
+          <%= cl_image_tag broom.photo.key, class: "card-img-top", alt: broom.name %>
+        <%# <% else %>
+          <%# <%= image_tag class: "card-img-top", alt: "Default Broom Image" %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= broom.name %></h5>
+          <p class="card-text"><%= broom.description %></p>
+          <p class="card-text">Price: <%= number_to_currency(broom.price) %></p>
+          <%= link_to 'View Details', broom_path(broom), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
