@@ -4,7 +4,7 @@
 
 <ul>
   <% @brooms.each do |broom| %>
-    <li>
+    <li class="brooms-display">
       <%= link_to broom.name, broom_path(broom) %>
       <p><%= broom.description %></p>
       <p>price : <%= number_to_currency(broom.price) %></p>
