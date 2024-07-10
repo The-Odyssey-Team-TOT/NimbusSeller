@@ -14,10 +14,11 @@ class BroomsController < ApplicationController
 
   def create
     @broom = Broom.new(broom_params)
+    @broom.user = current_user
     if @broom.save
       redirect_to broom_path(@broom)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
