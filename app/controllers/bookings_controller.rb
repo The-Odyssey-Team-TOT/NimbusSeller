@@ -16,7 +16,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-    raise
     @booking = Booking.new(booking_param)
     @booking.broom = @broom
     @booking.user = current_user
