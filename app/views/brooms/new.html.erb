@@ -1,9 +1,10 @@
 <h1>Add a new Broom</h1>
 
 <%= simple_form_for @broom do |f| %>
-  <%= f.input :name, label: "Nom" %>
+  <%= f.input :name, label: "Name" %>
   <%= f.input :description, label: "Description" %>
-  <%= f.input :price, label: "Prix" %>
+  <%= f.input :address, label: "Address" %>
+  <%= f.input :price, label: "Price" %>
   <%= f.input :photo, as: :file, label: "Photo" %>
-  <%= f.button :submit, "Ajouter", class: 'btn btn-primary' %>
+  <%= f.button :submit, "Add", class: 'btn btn-primary' %>
 <% end %>
