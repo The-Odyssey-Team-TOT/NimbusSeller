@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_broom, except: [:index, :show, :owner_bookings, :renter_bookings]
+  before_action :set_broom, except: [:index, :show, :owner_bookings, :renter_bookings, :accept, :decline]
 
   def index
     @bookings = Booking.all
@@ -16,10 +16,11 @@ class BookingsController < ApplicationController
   end
 
   def create
+    raise
     @booking = Booking.new(booking_param)
     @booking.broom = @broom
     @booking.user = current_user
-    @booking.status = 'pending'
+    @booking.status = 'Pending'
     if @booking.save
       redirect_to bookings_renter_path
     else
@@ -30,7 +31,7 @@ class BookingsController < ApplicationController
   def owner_bookings
     @owner_brooms = Broom.where(user: current_user)
     @owner_bookings = @owner_brooms.map do |owner_broom|
-      owner_broom.bookings.where(status: "Pending")
+      owner_broom.bookings
     end.flatten
   end
 
@@ -38,19 +39,17 @@ class BookingsController < ApplicationController
     @renter_bookings = current_user.bookings
   end
 
-  def accept_booking
-    if @booking.update(status: "accepted")
-      redirect_to owner_bookings_path, notice: 'The broom’s owner accepted your request.'
-    else
-      redirect_to owner_bookings_path, alert: 'The request was declined.'
+  def accept
+    @booking = Booking.find(params[:id])
+    if @booking.update(status: "Accepted")
+      redirect_to bookings_owner_path, notice: 'You have accepted the booking request.'
     end
   end
 
-  def decline_booking
-    if @booking.update(status: "declined")
-      redirect_to owner_bookings_path, notice: 'Booking request declined.'
-    else
-      redirect_to owner_bookings_path, alert: 'Failed to decline booking request'
+  def decline
+    @booking = Booking.find(params[:id])
+    if @booking.update(status: "Declined")
+      redirect_to bookings_owner_path, notice: 'Booking request declined.'
     end
   end
 
