@@ -1,12 +1,11 @@
 <div class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg flex">
-  <!-- Image section -->
+
   <div class="w-1/2">
     <% if @broom.photo.attached? %>
       <%= image_tag @broom.photo, class: 'rounded-lg max-h-96', alt: @broom.name %>
     <% end %>
   </div>
 
-  <!-- Details section -->
   <div class="w-1/2 pl-10 flex flex-col justify-between">
     <div>
       <h1 class="text-3xl font-bold mb-4"><%= @broom.name %></h1>
