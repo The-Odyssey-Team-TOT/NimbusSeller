@@ -11,10 +11,9 @@
 @import "components/index";
 @import "pages/index";
 
-html {
-  // background-image: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXFmbGQzeGU5OWpmMndqZzFvbWtrYXE5djd3aWdrdGN1Nmd2c3BtaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xBQcBO3NwQXE7o3Dik/giphy.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
+:root {
+  height: 100vh;
+
 }
 
 .title {
@@ -24,7 +23,6 @@ html {
   text-align: center;
   margin-top: 20px;
 }
-
 @keyframes rotateImage {
   from {
       transform: rotate(0deg);
@@ -33,13 +31,12 @@ html {
       transform: rotate(360deg);
   }
 }
-
 .broom-logo {
   width: 100px;
   height: 100px;
   cursor: pointer;
   display: block;
   margin: 0 auto;
-  animation-duration: 3s;
+  animation-duration: 0.8s;
   animation-fill-mode: forwards;
 }
