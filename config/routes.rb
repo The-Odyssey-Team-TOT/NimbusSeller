@@ -17,5 +17,10 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:index, :show]
+  resources :bookings, only: [:index, :show] do
+    member do
+      patch :accept
+      patch :decline
+    end
+  end
 end

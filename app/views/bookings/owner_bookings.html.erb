@@ -11,15 +11,24 @@
             <th>Start Date</th>
             <th>End Date</th>
             <th>Broom Name</th>
+            <th>Status</th>
             <th>Price</th>
           </tr>
         </thead>
         <tbody>
           <% @owner_bookings.each do |owner_booking| %>
             <tr>
-              <td><%= owner_booking.start_date.strftime('%d-%m-%Y') %></td>
-              <td><%= owner_booking.end_date.strftime('%d-%m-%Y') %></td>
+              <td><%= owner_booking.start_date ? owner_booking.start_date.strftime('%d-%m-%Y') : 'N/A' %></td>
+              <td><%= owner_booking.end_date ? owner_booking.end_date.strftime('%d-%m-%Y') : 'N/A' %></td>
               <td><%= owner_booking.broom.name %></td>
+              <td>
+                  <% if owner_booking.status == "Pending" %>
+                    <%= link_to 'Accept', accept_booking_path(owner_booking), data: { turbo_method: :patch }, class: 'text-green-500 hover:text-green-700' %>
+                    <%= link_to 'Decline', decline_booking_path(owner_booking), data: { turbo_method: :patch }, class: 'text-red-500 hover:text-red-700' %>
+                  <% else %>
+                    <%= owner_booking.status %>
+                  <% end %>
+              </td>
               <td><%= number_to_currency(owner_booking.broom.price) %></td>
             </tr>
           <% end %>
@@ -31,5 +40,5 @@
       No bookings found.
     </div>
   <% end %>
-  <%= link_to 'Go back to all brooms', brooms_path, class: 'btn btn-primary mt-3' %>
+  <%= link_to 'Go back to all brooms', brooms_path, class: 'inline-block px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700' %>
 </div>

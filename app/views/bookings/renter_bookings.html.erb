@@ -18,8 +18,12 @@
         <tbody class="bg-white divide-y divide-gray-200">
           <% @renter_bookings.each do |renter_booking| %>
             <tr>
-              <td class="px-6 py-4 whitespace-nowrap"><%= renter_booking.start_date.strftime('%d-%m-%Y') %></td>
-              <td class="px-6 py-4 whitespace-nowrap"><%= renter_booking.end_date.strftime('%d-%m-%Y') %></td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <%= renter_booking.start_date ? renter_booking.start_date.strftime('%d-%m-%Y') : 'Not set' %>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <%= renter_booking.end_date ? renter_booking.end_date.strftime('%d-%m-%Y') : 'Not set' %>
+              </td>
               <td class="px-6 py-4 whitespace-nowrap"><%= renter_booking.broom.name %></td>
               <td class="px-6 py-4 whitespace-nowrap"><%= renter_booking.status %></td>
               <td class="px-6 py-4 whitespace-nowrap"><%= number_to_currency(renter_booking.broom.price) %></td>
@@ -33,5 +37,5 @@
       No bookings found.
     </div>
   <% end %>
-  <%= link_to 'Go back to all brooms', brooms_path, class: 'mt-4 inline-block px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700' %>
+  <%= link_to 'Go back to all brooms', brooms_path, class: 'mt-4 inline-block px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700' %>
 </div>

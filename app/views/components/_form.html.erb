@@ -1,13 +1,9 @@
-<%= form_with(model: [@broom, @booking], local: true) do |form| %>
-  <div class="mb-4">
-    <%= form.label :start_date, class: 'block text-gray-700 text-sm font-bold mb-2' %>
-    <%= form.date_field :start_date, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+<%= form_with(model: [@broom, @booking], local: true, class: "space-y-6") do |form| %>
+  <div class="space-y-1">
+    <%= form.label :start_date, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.date_field :start_date, class: 'form-input block w-full sm:text-sm border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500', data: { controller: "datepicker" } %>
   </div>
-  <div class="mb-4">
-    <%= form.label :end_date, class: 'block text-gray-700 text-sm font-bold mb-2' %>
-    <%= form.date_field :end_date, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
-  </div>
-  <div class="flex items-center justify-between">
-    <%= form.submit 'Submit', class: 'bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+  <div class="mt-4">
+    <%= form.submit 'Create Booking', class: 'w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500' %>
   </div>
 <% end %>
