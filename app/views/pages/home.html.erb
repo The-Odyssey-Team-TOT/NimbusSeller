@@ -1,20 +1,22 @@
-<h1 class='title'>Nimbus Seller</h1>
-<%= image_tag 'broom.png', class: 'broom-logo', tabindex: "0" %>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const broomLogo = document.querySelector('.broom-logo');
-  if (broomLogo) {
-    broomLogo.addEventListener('click', function() {
-      this.style.animationName = 'rotateImage';
-      this.addEventListener('animationend', function() {
-        window.location.href = '/brooms';
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">Nimbus Seller</h1>
+  <img src="/assets/broom.png" alt="Broom logo" class="broom-logo w-32 h-32 mb-4" tabindex="0">
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const broomLogo = document.querySelector('.broom-logo');
+      if (broomLogo) {
+        broomLogo.addEventListener('click', function() {
+          this.style.animation = 'rotateImage 2s forwards';
+        });
+        this.addEventListener('animationend', function() {
+          window.location.href = '/brooms';
+        });
+      }
+      broomLogo.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          this.click();
+        }
       });
     });
-    broomLogo.addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        this.click();
-      }
-    });
-  }
-});
-</script>
+  </script>
+</div>

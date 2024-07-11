@@ -1,22 +1,26 @@
-<div class="container mt-5">
-  <div class="card shadow p-3 mb-5 bg-body-tertiary rounded text-shadow">
-    <div class="card-body text-shadow">
-      <h1 class="card-title text-center"><%= @broom.name %></h1>
+<div class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg flex">
+  <!-- Image section -->
+  <div class="w-1/2">
+    <% if @broom.photo.attached? %>
+      <%= image_tag @broom.photo, class: 'rounded-lg max-h-96', alt: @broom.name %>
+    <% end %>
+  </div>
 
-      <% if @broom.photo.attached? %>
-        <div class="text-center my-4" id="text-shadow">
-          <%= image_tag @broom.photo, class: 'img-fluid rounded broom-photo', alt: @broom.name, style: 'max-height: 400px;' %>
-        </div>
-      <% end %>
-      <p class="card-text"><%= @broom.description %></p>
-      <p class="card-text text-center"><strong>Prix :</strong> <%= number_to_currency(@broom.price) %>$</p>
-      <div class="d-flex justify-content-between">
-        <%= link_to 'Go back to the brooms', brooms_path, class: 'btn btn-secondary btn-rounded' %>
-      </div>
-      <br>
-      <h3>Book this broom</h3>
-      <br>
+  <!-- Details section -->
+  <div class="w-1/2 pl-10 flex flex-col justify-between">
+    <div>
+      <h1 class="text-3xl font-bold mb-4"><%= @broom.name %></h1>
+      <p class="text-gray-700 mt-4"><%= @broom.description %></p>
+      <p class="text-center font-semibold text-lg mt-4">Price: <%= number_to_currency(@broom.price) %></p>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-bold mb-3">Book this broom</h3>
       <%= render 'components/form' %>
     </div>
   </div>
+</div>
+
+<div class="container mx-auto text-center mt-6">
+  <%= link_to 'Go back to the brooms', brooms_path, class: 'text-indigo-600 hover:text-indigo-800' %>
 </div>
