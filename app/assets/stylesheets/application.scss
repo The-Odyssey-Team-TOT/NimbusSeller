@@ -1,3 +1,5 @@
+// * { border: 1px solid red; } //debug front-end pls comment while you not using it
+
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -15,6 +17,29 @@
   height: 100vh;
 
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body, .main-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.main-content {
+  min-height: calc(100vh - [Header_Height]px - [Footer_Height]px);
+}
+
 
 .title {
   margin: 10rem;
