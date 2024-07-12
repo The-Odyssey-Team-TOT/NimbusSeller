@@ -1,9 +1,12 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require "open-uri"
+
+Booking.destroy_all
+Broom.destroy_all
+User.destroy_all
+
+test_user = User.create(email: "test@test.test", password: "1234567")
+
+file = URI.open("https://static.wikia.nocookie.net/harrypotter/images/5/5b/%C3%89clair_de_Feu.png/revision/latest?cb=20130710170720&path-prefix=fr")
+broom = Broom.new(user: test_user, name: "Nimbus 6000", description: "super balais", price: "1200", address: "54 Avenue de Gleyze Vieille, Ramonville Saint Agne")
+broom.photo.attach(io: file, filename: "eclairdefeu.png", content_type: "image/png")
+broom.save!
