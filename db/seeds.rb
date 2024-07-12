@@ -22,7 +22,7 @@ broom4 = Broom.new(name: "Nimbus 1700", description: "This broom will lead you t
 broom4.photo.attach(io: file, filename: "broom4.png", content_type: "image/png")
 broom4.save!
 
-file = URI.open("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.fnac.com%2Fmp14876495%2FReplique-Harry-Potter-1-1-Balai-magique-Nimbus-2001%2Fw-4&psig=AOvVaw1_t0uqTgBA8aAO5FEfgU0T&ust=1720878274156000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPiPqaTRoYcDFQAAAAAdAAAAABAE")
+file = URI.open("https://fbi.cults3d.com/uploaders/14585245/illustration-file/6795c64e-54aa-4e8d-9795-912359568104/Nimbus%202001%20Standing%20Environment%20Light.png")
 broom5 = Broom.new(name: "Nimbus 2001", description: "The fastest model ever made, you can flee from both dragons and lightnings and reach the stars in no time!", address: "Latymer Secondary School, Haselbury Rd, London N9 9TN, Reino Unido",  price: 500, user: user1)
 broom5.photo.attach(io: file, filename: "eclairdefeu.png", content_type: "image/png")
 broom5.save!
