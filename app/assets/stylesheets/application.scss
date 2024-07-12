@@ -80,3 +80,9 @@ p.notice {
 img {
   object-fit: cover;
 }
+
+.mapboxgl-map {
+  margin-bottom: 5rem;
+  border-radius: 10px;
+  width: 60%;
+}

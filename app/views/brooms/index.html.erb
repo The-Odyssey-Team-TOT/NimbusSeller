@@ -1,22 +1,22 @@
-<div class="text-center pt-12 mb-8">
-  <h1 class="text-4xl font-bold mb-6">All our Brooms</h1>
+<div class="text-center mt-3 p-3">
+  <h1>All our Brooms</h1>
 </div>
 
 
-<div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
+<div class="d-flex justify-content-center my-4">
+  <div class="col-sm-4 my-3">
     <%= form_with url: brooms_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
             placeholder: "Type a keyword"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Search", name: "", class: 'inline-block px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700' %>
     <% end %>
   </div>
 </div>
 <div class="container mx-auto px-4">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
     <% @brooms.each do |broom| %>
       <div class="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
         <% if broom.photo.present? %>
