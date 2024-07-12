@@ -2,7 +2,7 @@
   <div class="relative space-y-1 w-50">
     <div class="relative">
       <i class="fa-solid fa-calendar-days absolute left-0 inset-y-0 pl-3 flex items-center pointer-events-none right-3 my-2"></i>
-      <%= form.date_field :start_date, class: 'form-input block w-50 p-1 sm:text-sm border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 border-solid border-1 border-gray-600', data: { controller: "datepicker" } %>
+      <%= form.date_field :start_date, class: 'form-input block w-100 p-1 datefield-padding sm:text-sm border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 border-solid border-1 border-gray-600', data: { controller: "datepicker" }, placeholder: "DD/MM/YYYY" %>
     </div>
   </div>
   <div class="mt-4">

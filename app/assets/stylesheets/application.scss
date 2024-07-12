@@ -86,3 +86,21 @@ img {
   border-radius: 10px;
   width: 60%;
 }
+
+input.btn {
+  margin-top: 4px;
+  display: flex;
+  text-align: center;
+  display: inline-block;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  color: white;
+  background-color: #6d28d9;
+}
+
+.datefield-padding {
+  padding-left: 2.2rem !important;
+}
