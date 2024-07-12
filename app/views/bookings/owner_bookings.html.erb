@@ -2,32 +2,34 @@
   <h1>My bookings</h1>
 </div>
 
-<div class="container shadow p-5 mb-5 bg-body-tertiary rounded">
+<div class="container mx-auto p-5 shadow-lg rounded-lg bg-white mt-3">
 <% if @owner_bookings.any? %>
     <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
+      <table class="min-w-full divide-y divide-gray-300">
+        <thead class="bg-gray-700 text-white">
           <tr>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Broom Name</th>
-            <th>Status</th>
-            <th>Price</th>
+            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Start Date</th>
+            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">End Date</th>
+            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Broom Name</th>
+            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Status</th>
+            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Price</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-white divide-y divide-gray-200">
           <% @owner_bookings.each do |owner_booking| %>
             <tr>
-              <td><%= owner_booking.start_date.strftime('%d-%m-%Y') %></td>
-              <td><%= owner_booking.end_date.strftime('%d-%m-%Y') %></td>
-              <td><%= owner_booking.broom.name %></td>
-              <td><% if owner_booking.status == "Pending" %>
-                  <%= link_to 'Accept', accept_booking_path(owner_booking), data: { turbo_method: :patch } %>
-                  <%= link_to 'Decline', decline_booking_path(owner_booking), data: { turbo_method: :patch } %>
+              <td class="px-6 py-4 whitespace-nowrap"><%= owner_booking.start_date ? owner_booking.start_date.strftime('%d-%m-%Y') : 'N/A' %></td>
+              <td class="px-6 py-4 whitespace-nowrap"><%= owner_booking.end_date ? owner_booking.end_date.strftime('%d-%m-%Y') : 'N/A' %></td>
+              <td class="px-6 py-4 whitespace-nowrap"><%= owner_booking.broom.name %></td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                  <% if owner_booking.status == "Pending" %>
+                    <%= link_to 'Accept', accept_booking_path(owner_booking), data: { turbo_method: :patch }, class: 'text-green-500 hover:text-green-700' %>
+                    <%= link_to 'Decline', decline_booking_path(owner_booking), data: { turbo_method: :patch }, class: 'text-red-500 hover:text-red-700' %>
                   <% else %>
-                  <%= owner_booking.status %>
-                  <% end %></td>
-              <td><%= number_to_currency(owner_booking.broom.price) %></td>
+                    <%= owner_booking.status %>
+                  <% end %>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap"><%= number_to_currency(owner_booking.broom.price) %></td>
             </tr>
           <% end %>
         </tbody>
@@ -38,5 +40,5 @@
       No bookings found.
     </div>
   <% end %>
-  <%= link_to 'Go back to all brooms', brooms_path, class: 'btn btn-primary mt-3' %>
+  <%= link_to 'Go back to all brooms', brooms_path, class: 'mt-4 inline-block px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700' %>
 </div>

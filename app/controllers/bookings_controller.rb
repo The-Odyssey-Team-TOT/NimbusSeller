@@ -20,6 +20,9 @@ class BookingsController < ApplicationController
     @booking.broom = @broom
     @booking.user = current_user
     @booking.status = 'Pending'
+    dates = booking_param[:start_date].split(' to ')
+    @booking.start_date = dates[0]
+    @booking.end_date = dates[1]
     if @booking.save
       redirect_to bookings_renter_path
     else
