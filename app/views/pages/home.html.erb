@@ -1,6 +1,6 @@
-<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 cursor-pointer" onclick="animateAndRedirect()" tabindex="0" onkeydown="handleKeyDown(event)" style="background-image: url('/assets/quidditch.png'); background-size: cover; background-position: center; object-fit: cover;">
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 cursor-pointer" onclick="animateAndRedirect()" tabindex="0" onkeydown="handleKeyDown(event)" style="background-image: url('https://cdn.discordapp.com/attachments/753337228234588233/1261328736935084032/quidditch2.png?ex=66928f6d&is=66913ded&hm=366b7a4baed35da8777dabe55202c129a89a931ef64fc8b95211e81b0c362156&'); background-size: cover; background-position: center; object-fit: cover;">
   <h1 class="text-3xl font-bold text-gray-900 mb-2" style="background: rgba(255, 255, 255, 0.5); padding: 0.5rem 1rem; border-radius: 10px;">Nimbus Seller</h1>
-  <img src="/assets/broom.png" alt="Broom logo" class="broom-logo w-32 h-32 mb-4">
+  <%= image_tag 'broom.png', alt: "Broom logo", class: "broom-logo w-32 h-32 mb-4" %>
   <script>
     function animateAndRedirect() {
       const broomLogo = document.querySelector('.broom-logo');
