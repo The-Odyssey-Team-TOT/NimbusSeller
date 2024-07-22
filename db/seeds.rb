@@ -1,28 +1,63 @@
-require "open-uri"
+# db/seeds.rb
 
-Booking.destroy_all
-Broom.destroy_all
+require 'faker'
+
+# Clear existing records
 User.destroy_all
+Product.destroy_all
+Order.destroy_all
+OrderItem.destroy_all
 
-user1 = User.create(email: "test@test.en", password: "1234567")
-user2 = User.create(email: "test@test_test.en", password: "123123")
+# Create users
+user1 = User.create!(
+  email: 'user1@example.com',
+  password: 'password',
+  password_confirmation: 'password'
+)
 
-file = URI.open("https://static.wikia.nocookie.net/harrypotter/images/7/74/Firebolt.jpg/revision/latest?cb=20141122220040")
-broom2 = Broom.new(name: "Flying Lightning", description: "The fastest broom I got to ride", address: "120 The Causeway, Quedgeley, Gloucester GL2 4LH, United Kingdoms", price: 420, user: user1)
-broom2.photo.attach(io: file, filename: "broom2.png", content_type: "image/png")
-broom2.save!
+user2 = User.create!(
+  email: 'user2@example.com',
+  password: 'password',
+  password_confirmation: 'password'
+)
 
-file = URI.open("https://static.wikia.nocookie.net/harrypotter/images/e/ec/Fl%C3%A8che_d%27Argent.jpg/revision/latest?cb=20230221093725&path-prefix=fr")
-broom3 = Broom.new(name: "Silver Arrow", description: "An old but steady model, will never let you down", address: "Wolsey House, Sproughton Rd, Ipswich IP1 5AN, Reino Unido", price: 155, user: user1)
-broom3.photo.attach(io: file, filename: "broom3.png", content_type: "image/png")
-broom3.save!
+puts "Created #{User.count} users"
 
-file = URI.open("https://static.wikia.nocookie.net/harrypotter/images/3/35/Nimbus_1700_%28HPSP%29.png/revision/latest?cb=20240224171559&path-prefix=fr")
-broom4 = Broom.new(name: "Nimbus 1700", description: "This broom will lead you through fame and victory", address: "Westwood Industrial Estate, Westwood, Margate CT9 4JX, Reino Unido", price: 280, user: user1)
-broom4.photo.attach(io: file, filename: "broom4.png", content_type: "image/png")
-broom4.save!
+# Create products
+10.times do
+  Product.create!(
+    name: Faker::Commerce.product_name,
+    description: Faker::Lorem.paragraph,
+    price: Faker::Commerce.price(range: 10.0..100.0),
+    stock: Faker::Number.between(from: 1, to: 100),
+    image_url: Faker::LoremFlickr.image(size: "300x300", search_terms: ['product']),
+    user: [user1, user2].sample
+  )
+end
 
-file = URI.open("https://fbi.cults3d.com/uploaders/14585245/illustration-file/6795c64e-54aa-4e8d-9795-912359568104/Nimbus%202001%20Standing%20Environment%20Light.png")
-broom5 = Broom.new(name: "Nimbus 2001", description: "The fastest model ever made, you can flee from both dragons and lightnings and reach the stars in no time!", address: "Latymer Secondary School, Haselbury Rd, London N9 9TN, Reino Unido",  price: 500, user: user1)
-broom5.photo.attach(io: file, filename: "eclairdefeu.png", content_type: "image/png")
-broom5.save!
+puts "Created #{Product.count} products"
+
+# Create orders
+3.times do
+  order = Order.create!(
+    user: [user1, user2].sample,  # Ensure the user exists
+    total_price: Faker::Commerce.price(range: 30.0..200.0),
+    status: 'pending'
+  )
+
+  # Create order items
+  2.times do
+    product = Product.order('RANDOM()').first
+    OrderItem.create!(
+      order: order,
+      product: product,
+      quantity: Faker::Number.between(from: 1, to: 5),
+      unit_price: product.price
+    )
+  end
+end
+
+puts "Created #{Order.count} orders with #{OrderItem.count} order items"
+
+# Output seed data
+puts "Seeding completed!"

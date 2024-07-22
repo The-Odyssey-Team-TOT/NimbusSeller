@@ -10,6 +10,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/login";
 
 @import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
 
@@ -102,9 +103,113 @@ input.btn {
   padding-bottom: 5px;
   border-radius: 5px;
   color: white;
-  background-color: #6d28d9;
+  background-color: #1d4ed8;
 }
 
 .datefield-padding {
   padding-left: 2.2rem !important;
+}
+
+
+.product-form-container {
+  background: rgba(0, 0, 0, 0.8); // Noir transparent
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 70rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.product-form-container h2 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.form-inputs .form-group {
+  margin-bottom: 15px;
+}
+
+.form-inputs .form-group input,
+.form-inputs .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.form-inputs .form-group label {
+  color: #fff;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-actions .btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-actions .btn:hover {
+  background-color: #0056b3;
+}
+
+.product-card {
+  background: rgba(0, 0, 0, 0.8); /* Noir transparent */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.product-card img {
+  border-radius: 10px 10px 0 0;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+
+.product-details-container {
+  color: white;
+  padding: 2rem;
+  margin: 5rem;
+  text-align: center;
+  background-color: black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  .product-image {
+    position: relative;
+    left: 29%;
+    margin: 5rem;
+    display: flex;
+    justify-content: center;
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+}
+
+.product-btn {
+  padding: 2rem;
 }

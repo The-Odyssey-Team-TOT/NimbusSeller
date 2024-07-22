@@ -8,5 +8,14 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show]
 
-  resources :products
+  resources :products do
+    member do
+      post 'add_to_cart', to: 'carts#add_item'
+    end
+  end
+
+  resource :cart, only: [:show] do
+    post 'add_item/:product_id', to: 'carts#add_item', as: 'add_item'
+    delete 'remove_item/:product_id', to: 'carts#remove_item', as: 'remove_item'
+  end
 end
