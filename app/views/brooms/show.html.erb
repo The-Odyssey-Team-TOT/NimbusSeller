@@ -10,7 +10,7 @@
     <div>
       <h1 class="text-3xl font-bold mb-4"><%= @broom.name %></h1>
       <p class="text-gray-700 mt-4"><%= @broom.description %></p>
-      <p class="text-start font-semibold text-lg mt-4">Price: <%= number_to_currency(@broom.price) %></p>
+      <p class="text-start font-semibold text-lg mt-4">Price <%= number_to_currency(@broom.price) %></p>
     </div>
 
     <div>

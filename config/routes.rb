@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'bookings/owner', to: "bookings#owner_bookings"
   get 'bookings/renter', to: "bookings#renter_bookings"
 
-  resources :brooms, only: [:index, :new, :show, :create, :destroy] do
+  resources :figurines, only: [:index, :new, :show, :create, :destroy] do
     resources :bookings, only: [:new, :create]
   end
 
