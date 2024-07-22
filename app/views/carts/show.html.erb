@@ -25,6 +25,7 @@
     </tbody>
   </table>
   <h2>Total: <%= number_to_currency(@order_items.sum { |item| item.unit_price * item.quantity }) %></h2>
+  <%= button_to 'Checkout', checkouts_create_path, method: :post, class: 'btn btn-primary' %>
 <% else %>
   <p>Your cart is empty.</p>
 <% end %>
