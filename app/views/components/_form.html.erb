@@ -1,11 +1,42 @@
-<%= form_with(model: [@broom, @booking], local: true, class: "space-y-6") do |form| %>
-  <div class="relative space-y-1 w-50">
-    <div class="relative">
-      <i class="fa-solid fa-calendar-days absolute left-0 inset-y-0 pl-3 flex items-center pointer-events-none right-3 my-2"></i>
-      <%= form.date_field :start_date, class: 'form-input block w-100 p-1 datefield-padding sm:text-sm border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 border-solid border-1 border-gray-600', data: { controller: "datepicker" }, placeholder: "DD/MM/YYYY" %>
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
-  <div class="mt-4">
-    <%= form.submit 'Create Booking', class: 'w-50 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500' %>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price %>
+    <%= form.number_field :price, step: 0.01, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :stock %>
+    <%= form.number_field :stock, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
