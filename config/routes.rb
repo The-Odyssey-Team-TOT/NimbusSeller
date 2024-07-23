@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'checkouts/create'
   devise_for :users
   root to: "pages#home"
 
@@ -19,5 +20,5 @@ Rails.application.routes.draw do
     delete 'remove_item/:product_id', to: 'carts#remove_item', as: 'remove_item'
   end
 
-  post 'checkout/create', to: 'checkouts#create', as: 'checkouts_create'
+  post 'checkout/create', to: 'checkouts#create', as: 'checkout_create'
 end
